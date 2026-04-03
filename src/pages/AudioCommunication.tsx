@@ -52,8 +52,10 @@ const AudioCommunication = () => (
 
         <section className="glass-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">🎵 Listen to the Audio</h2>
-          <audio controls className="w-full" preload="metadata">
+          <audio controls className="w-full" preload="auto">
+            <source src="/audio/audio-communication.opus" type="audio/ogg; codecs=opus" />
             <source src="/audio/audio-communication.opus" type="audio/opus" />
+            <source src="/audio/audio-communication.opus" type="audio/ogg" />
             Your browser does not support the audio element.
           </audio>
         </section>
