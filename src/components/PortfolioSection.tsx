@@ -12,7 +12,7 @@ const projects = [
     icon: Image,
     title: "Visual Communication",
     desc: "Uses design, layout, and imagery to communicate messages effectively without heavy reliance on text.",
-    link: "/audio-communication",
+    link: null,
   },
   {
     icon: MessageCircle,
