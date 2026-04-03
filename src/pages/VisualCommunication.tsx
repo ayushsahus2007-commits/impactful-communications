@@ -1,5 +1,66 @@
 import { ArrowLeft, Image } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+
+const visualImpactData = [
+  { name: "Fast Emotional Recognition", value: 34 },
+  { name: "Context-Based Humor", value: 28 },
+  { name: "Message Recall", value: 21 },
+  { name: "Conversation Trigger", value: 17 },
+];
+
+const visualColors = [
+  "hsl(var(--primary))",
+  "hsl(195 80% 56%)",
+  "hsl(271 83% 66%)",
+  "hsl(35 92% 64%)",
+];
+
+const RADIAN = Math.PI / 180;
+
+const renderVisualLabel = (props: {
+  cx?: number;
+  cy?: number;
+  midAngle?: number;
+  outerRadius?: number;
+  percent?: number;
+  name?: string;
+}) => {
+  const {
+    cx = 0,
+    cy = 0,
+    midAngle = 0,
+    outerRadius = 0,
+    percent = 0,
+    name = "",
+  } = props;
+
+  const labelRadius = outerRadius + 24;
+  let x = cx + labelRadius * Math.cos(-midAngle * RADIAN);
+  const y = cy + labelRadius * Math.sin(-midAngle * RADIAN);
+  const isRight = x >= cx;
+
+  x += isRight ? 6 : -6;
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="hsl(var(--foreground))"
+      fontSize={13}
+      textAnchor={isRight ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {`${name}: ${Math.round(percent * 100)}%`}
+    </text>
+  );
+};
 
 const VisualCommunication = () => (
   <div
@@ -55,6 +116,21 @@ const VisualCommunication = () => (
 
         <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">Reflection</h2>
+          <div className="grid gap-2 text-sm text-muted-foreground">
+            <p>
+              <span className="text-foreground font-medium">Purpose:</span> to demonstrate
+              how visuals and minimal text can communicate ideas quickly.
+            </p>
+            <p>
+              <span className="text-foreground font-medium">Target audience:</span> digital
+              users who consume communication through social platforms and visual feeds.
+            </p>
+            <p>
+              <span className="text-foreground font-medium">Theme connection:</span> this
+              entry explores communication as a visual process shaped by shared context and
+              interpretation.
+            </p>
+          </div>
           <p className="text-muted-foreground leading-relaxed">
             Through this entry, I learned that communication is not limited to formal methods but also exists in everyday digital interactions. Memes show how visual elements can simplify complex ideas and make communication more engaging.
           </p>
@@ -67,6 +143,78 @@ const VisualCommunication = () => (
           <p className="text-muted-foreground leading-relaxed">
             Overall, this entry reflects my understanding of visual communication as a fast, relatable, and powerful tool in today’s digital world.
           </p>
+        </section>
+
+        <section className="glass-card liquid-button-card p-8 space-y-5">
+          <h2 className="font-display text-xl font-semibold">
+            Visual Communication Impact Graph
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Illustrative distribution of why visual posts and memes spread quickly in digital
+            communication.
+          </p>
+          <div className="h-80 w-full rounded-xl bg-background/40 p-3">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart margin={{ top: 20, right: 60, bottom: 20, left: 60 }}>
+                <Pie
+                  data={visualImpactData}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={90}
+                  innerRadius={50}
+                  paddingAngle={4}
+                  dataKey="value"
+                  labelLine={false}
+                  label={renderVisualLabel}
+                >
+                  {visualImpactData.map((entry, index) => (
+                    <Cell key={entry.name} fill={visualColors[index % visualColors.length]} />
+                  ))}
+                </Pie>
+                <Tooltip
+                  formatter={(value, name) => [`${value}%`, name]}
+                  contentStyle={{
+                    backgroundColor: "rgba(15, 23, 32, 0.94)",
+                    border: "1px solid rgba(52, 211, 153, 0.4)",
+                    color: "#d7f8ee",
+                    borderRadius: "12px",
+                    boxShadow: "0 12px 28px rgba(0, 0, 0, 0.35)",
+                  }}
+                  itemStyle={{ color: "#d7f8ee", fontWeight: 600 }}
+                  labelStyle={{ color: "#a6eed5" }}
+                  wrapperStyle={{ outline: "none" }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </section>
+
+        <section className="glass-card liquid-button-card p-8 space-y-5">
+          <h2 className="font-display text-xl font-semibold">Visual References</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-xl border border-border/70 bg-background/35">
+              <img
+                src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1280&auto=format&fit=crop"
+                alt="People reacting to visuals and memes on mobile screens."
+                className="h-44 w-full object-cover"
+                loading="lazy"
+              />
+              <figcaption className="p-3 text-xs text-muted-foreground">
+                Visuals create instant reactions and shared meaning.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-xl border border-border/70 bg-background/35">
+              <img
+                src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1280&auto=format&fit=crop"
+                alt="Social media style tiles representing visual storytelling."
+                className="h-44 w-full object-cover"
+                loading="lazy"
+              />
+              <figcaption className="p-3 text-xs text-muted-foreground">
+                Social media platforms depend heavily on visual communication.
+              </figcaption>
+            </figure>
+          </div>
         </section>
       </div>
     </div>

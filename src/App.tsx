@@ -8,12 +8,22 @@ import WrittenCommunication from "./pages/WrittenCommunication.tsx";
 import AudioCommunication from "./pages/AudioCommunication.tsx";
 import VisualCommunication from "./pages/VisualCommunication.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import TargetCursor from "./components/TargetCursor.jsx";
+import MagneticHoverLayer from "./components/ui/magnetic-hover-layer";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <TargetCursor
+        targetSelector=".cursor-target"
+        spinDuration={2}
+        hideDefaultCursor
+        hoverDuration={0.2}
+        parallaxOn
+      />
+      <MagneticHoverLayer selector=".magnetic-target" strength={0.2} />
       <Toaster />
       <Sonner />
       <BrowserRouter>

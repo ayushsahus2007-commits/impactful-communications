@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&family=Sora:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -39,6 +39,9 @@
     --glass-bg: 220 18% 11% / 0.6;
     --glass-border: 220 14% 22%;
     --glow: 160 84% 52% / 0.15;
+    --glass-surface-strong: 0.74;
+    --glass-surface-soft: 0.62;
+    --glass-sheen: 0.1;
 
     --sidebar-background: 220 18% 11%;
     --sidebar-foreground: 210 20% 92%;
@@ -58,16 +61,28 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "kern", "liga", "clig", "calt";
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    letter-spacing: 0.01em;
+  }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-glass-border rounded-2xl;
+    @apply backdrop-blur-2xl border border-glass-border rounded-2xl;
+    background-color: hsl(var(--card) / var(--glass-surface-strong));
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    backdrop-filter: blur(14px) saturate(125%);
   }
 
   .glow-border {
@@ -75,7 +90,14 @@
   }
 
   .liquid-button-card {
-    @apply relative isolate overflow-hidden border border-white/15 bg-transparent backdrop-blur-xl transition-all duration-300;
+    @apply relative isolate overflow-hidden border border-white/15 backdrop-blur-2xl transition-all duration-300;
+    background: linear-gradient(
+      160deg,
+      hsl(var(--card) / var(--glass-surface-strong)),
+      hsl(var(--background) / var(--glass-surface-soft))
+    );
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    backdrop-filter: blur(18px) saturate(135%);
     box-shadow:
       0 8px 22px hsl(var(--primary) / 0.08),
       inset 0 1px 0 hsl(0 0% 100% / 0.12),
@@ -87,11 +109,12 @@
     @apply absolute inset-[1px] -z-10 rounded-[inherit];
     background: linear-gradient(
       to bottom,
-      hsl(var(--primary) / 0.14),
-      hsl(0 0% 100% / 0.04),
-      hsl(var(--background) / 0.2)
+      hsl(var(--primary) / 0.16),
+      hsl(0 0% 100% / var(--glass-sheen)),
+      hsl(var(--background) / 0.28)
     );
-    backdrop-filter: url("#container-glass") blur(8px);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    backdrop-filter: blur(12px) saturate(130%);
   }
 
   .liquid-button-card::after {
@@ -119,6 +142,40 @@
 
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent;
+  }
+
+  .glass-soft {
+    @apply relative isolate overflow-hidden backdrop-blur-2xl;
+    background: linear-gradient(
+      160deg,
+      hsl(var(--card) / var(--glass-surface-strong)),
+      hsl(var(--background) / var(--glass-surface-soft))
+    );
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    backdrop-filter: blur(16px) saturate(130%);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.08),
+      0 10px 22px hsl(var(--background) / 0.28);
+  }
+
+  .glass-soft::before {
+    content: "";
+    @apply pointer-events-none absolute inset-[1px] rounded-[inherit];
+    background: linear-gradient(
+      to bottom,
+      hsl(0 0% 100% / var(--glass-sheen)),
+      transparent 30%,
+      transparent
+    );
+  }
+
+  .eyebrow-text {
+    @apply font-accent uppercase text-xs text-muted-foreground;
+    letter-spacing: 0.22em;
+  }
+
+  .anchor-title {
+    scroll-margin-top: 5.5rem;
   }
 }
 

@@ -1,5 +1,21 @@
 import { ArrowLeft, PenLine } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+const writtenClarityData = [
+  { stage: "Vague Message", clarity: 36, alignment: 34 },
+  { stage: "Clarified Deadline", clarity: 82, alignment: 78 },
+  { stage: "Confirmed by Team", clarity: 92, alignment: 90 },
+];
 
 const WrittenCommunication = () => (
   <div
@@ -61,6 +77,21 @@ const WrittenCommunication = () => (
 
         <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">Reflection</h2>
+          <div className="grid gap-2 text-sm text-muted-foreground">
+            <p>
+              <span className="text-foreground font-medium">Purpose:</span> to show how
+              unclear wording can create delays in team collaboration.
+            </p>
+            <p>
+              <span className="text-foreground font-medium">Target audience:</span>{" "}
+              classmates, project teams, and anyone relying on written group communication.
+            </p>
+            <p>
+              <span className="text-foreground font-medium">Theme connection:</span> this
+              entry focuses on communication as a process that needs clarity, timing, and
+              mutual understanding.
+            </p>
+          </div>
           <p className="text-muted-foreground leading-relaxed">
             This experience taught me the importance of clarity, precision, and audience awareness
             in written communication. I realized that words like "soon" or "later" can be
@@ -76,6 +107,72 @@ const WrittenCommunication = () => (
             to structure my messages more effectively, anticipate misunderstandings, and ensure that
             my communication is clear, direct, and purposeful—especially in digital environments.
           </p>
+        </section>
+
+        <section className="glass-card liquid-button-card p-8 space-y-5">
+          <h2 className="font-display text-xl font-semibold">
+            Communication Improvement Graph
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Snapshot of how clarity and team alignment improved after changing from vague to
+            specific written instructions.
+          </p>
+          <div className="h-80 w-full rounded-xl bg-background/40 p-3">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={writtenClarityData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis dataKey="stage" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }} />
+                <YAxis
+                  domain={[0, 100]}
+                  tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                />
+                <Tooltip
+                  formatter={(value, name) => [`${value}%`, name]}
+                  contentStyle={{
+                    backgroundColor: "rgba(15, 23, 32, 0.94)",
+                    border: "1px solid rgba(52, 211, 153, 0.4)",
+                    color: "#d7f8ee",
+                    borderRadius: "12px",
+                    boxShadow: "0 12px 28px rgba(0, 0, 0, 0.35)",
+                  }}
+                  itemStyle={{ color: "#d7f8ee", fontWeight: 600 }}
+                  labelStyle={{ color: "#a6eed5" }}
+                  wrapperStyle={{ outline: "none" }}
+                />
+                <Legend />
+                <Bar dataKey="clarity" fill="hsl(var(--primary))" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="alignment" fill="hsl(195 80% 56%)" radius={[6, 6, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </section>
+
+        <section className="glass-card liquid-button-card p-8 space-y-5">
+          <h2 className="font-display text-xl font-semibold">Context Images</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-xl border border-border/70 bg-background/35">
+              <img
+                src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=1280&auto=format&fit=crop"
+                alt="A team discussing a shared plan on laptop and phone."
+                className="h-44 w-full object-cover"
+                loading="lazy"
+              />
+              <figcaption className="p-3 text-xs text-muted-foreground">
+                Group discussion and written coordination.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-xl border border-border/70 bg-background/35">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1280&auto=format&fit=crop"
+                alt="Phone and notebook showing planning notes and written reminders."
+                className="h-44 w-full object-cover"
+                loading="lazy"
+              />
+              <figcaption className="p-3 text-xs text-muted-foreground">
+                Clear written deadlines reduce confusion.
+              </figcaption>
+            </figure>
+          </div>
         </section>
       </div>
     </div>
