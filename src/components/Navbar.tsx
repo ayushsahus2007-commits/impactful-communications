@@ -25,10 +25,14 @@ const Navbar = () => {
         scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="relative max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#home" className="font-display font-bold text-lg gradient-text">
           Portfolio
         </a>
+
+        <span className="hidden md:block absolute left-1/2 -translate-x-1/2 text-xs text-muted-foreground whitespace-nowrap">
+          Ayush Sahu | Reg No: 25BCE2312
+        </span>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
@@ -68,6 +72,9 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <p className="pt-2 text-xs text-muted-foreground">
+            Ayush Sahu | Reg No: 25BCE2312
+          </p>
         </div>
       )}
     </nav>
