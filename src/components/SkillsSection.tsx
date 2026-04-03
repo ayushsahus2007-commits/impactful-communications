@@ -18,7 +18,7 @@ const SkillsSection = () => (
       {skills.map(({ icon: Icon, label }) => (
         <div
           key={label}
-          className="glass-card p-6 flex flex-col items-center text-center gap-4 hover:glow-border transition-all duration-300 hover:-translate-y-1"
+          className="glass-card liquid-button-card p-6 flex flex-col items-center text-center gap-4 hover:glow-border transition-all duration-300 hover:-translate-y-1"
         >
           <Icon size={28} className="text-primary" />
           <span className="text-sm font-medium">{label}</span>

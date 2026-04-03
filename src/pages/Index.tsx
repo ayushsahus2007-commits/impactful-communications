@@ -6,11 +6,12 @@ import PortfolioSection from "@/components/PortfolioSection";
 import SkillsSection from "@/components/SkillsSection";
 import GrowthSection from "@/components/GrowthSection";
 import AIDisclosure from "@/components/AIDisclosure";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ShaderBackground from "@/components/ui/shader-background";
 
 const Index = () => (
   <div className="min-h-screen">
+    <ShaderBackground />
     <Navbar />
     <HeroSection />
     <IntroSection />
@@ -19,7 +20,6 @@ const Index = () => (
     <SkillsSection />
     <GrowthSection />
     <AIDisclosure />
-    <ContactSection />
     <Footer />
   </div>
 );

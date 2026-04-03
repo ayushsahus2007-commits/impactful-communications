@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -44,13 +44,15 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground"
+        <LiquidButton
+          size="icon"
+          tone="mint"
+          className="md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+        </LiquidButton>
       </div>
 
       {/* Mobile menu */}

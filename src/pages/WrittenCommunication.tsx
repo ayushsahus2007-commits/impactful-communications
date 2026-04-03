@@ -2,7 +2,13 @@ import { ArrowLeft, PenLine } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const WrittenCommunication = () => (
-  <div className="min-h-screen bg-background text-foreground">
+  <div
+    className="min-h-screen bg-background bg-cover bg-center bg-fixed text-foreground"
+    style={{
+      backgroundImage:
+        "linear-gradient(hsl(var(--background) / 0.55), hsl(var(--background) / 0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop')",
+    }}
+  >
     <div className="max-w-3xl mx-auto px-6 py-20">
       <Link
         to="/#portfolio"
@@ -24,14 +30,14 @@ const WrittenCommunication = () => (
       </h1>
 
       <div className="space-y-8 mt-10">
-        <section className="glass-card p-8">
+        <section className="glass-card liquid-button-card p-8">
           <h2 className="font-display text-xl font-semibold mb-1">When Clarity Matters</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Theme: Communication in Digital Interactions
           </p>
         </section>
 
-        <section className="glass-card p-8 space-y-4">
+        <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">Incident – Miscommunication</h2>
           <p className="text-muted-foreground leading-relaxed">
             This written entry demonstrates my ability to communicate ideas clearly and effectively
@@ -53,7 +59,7 @@ const WrittenCommunication = () => (
           </p>
         </section>
 
-        <section className="glass-card p-8 space-y-4">
+        <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">Reflection</h2>
           <p className="text-muted-foreground leading-relaxed">
             This experience taught me the importance of clarity, precision, and audience awareness

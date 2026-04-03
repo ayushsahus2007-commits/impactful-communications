@@ -2,7 +2,13 @@ import { ArrowLeft, Image } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AudioCommunication = () => (
-  <div className="min-h-screen bg-background text-foreground">
+  <div
+    className="min-h-screen bg-background bg-cover bg-center bg-fixed text-foreground"
+    style={{
+      backgroundImage:
+        "linear-gradient(hsl(var(--background) / 0.55), hsl(var(--background) / 0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop')",
+    }}
+  >
     <div className="max-w-3xl mx-auto px-6 py-20">
       <Link
         to="/#portfolio"
@@ -24,14 +30,14 @@ const AudioCommunication = () => (
       </h1>
 
       <div className="space-y-8 mt-10">
-        <section className="glass-card p-8">
+        <section className="glass-card liquid-button-card p-8">
           <h2 className="font-display text-xl font-semibold mb-1">The Power of Tone in Communication</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Theme: Communication Through Voice and Expression
           </p>
         </section>
 
-        <section className="glass-card p-8 space-y-4">
+        <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">Description – Audio Message</h2>
           <p className="text-muted-foreground leading-relaxed">
             This audio entry focuses on how communication is influenced not just by words, but by
@@ -50,7 +56,7 @@ const AudioCommunication = () => (
           </p>
         </section>
 
-        <section className="glass-card p-8 space-y-4">
+        <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">🎵 Listen to the Audio</h2>
           <audio controls className="w-full" preload="auto">
             <source src="/audio/audio-communication.opus" type="audio/ogg; codecs=opus" />
@@ -60,7 +66,7 @@ const AudioCommunication = () => (
           </audio>
         </section>
 
-        <section className="glass-card p-8 space-y-4">
+        <section className="glass-card liquid-button-card p-8 space-y-4">
           <h2 className="font-display text-xl font-semibold">Reflection</h2>
           <p className="text-muted-foreground leading-relaxed">
             Through this entry, I learned that effective communication is not only about choosing

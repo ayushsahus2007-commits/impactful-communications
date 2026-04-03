@@ -1,6 +1,6 @@
 const IntroSection = () => (
   <section id="intro" className="section-container">
-    <div className="glass-card p-8 md:p-12 max-w-3xl mx-auto text-center">
+    <div className="glass-card liquid-button-card p-8 md:p-12 max-w-3xl mx-auto text-center">
       <h2 className="font-display text-2xl md:text-3xl font-bold mb-6">Welcome</h2>
       <p className="text-muted-foreground leading-relaxed">
         Welcome to my portfolio. This website represents my journey of exploring

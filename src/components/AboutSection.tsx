@@ -13,7 +13,7 @@ const AboutSection = () => (
     </h2>
 
     <div className="grid md:grid-cols-2 gap-8 mb-12">
-      <div className="glass-card p-8">
+      <div className="glass-card liquid-button-card p-8">
         <h3 className="font-display text-xl font-semibold mb-4 text-primary">Who I Am</h3>
         <p className="text-muted-foreground leading-relaxed">
           I am a motivated learner with a strong interest in communication,
@@ -21,7 +21,7 @@ const AboutSection = () => (
           and impactful way.
         </p>
       </div>
-      <div className="glass-card p-8">
+      <div className="glass-card liquid-button-card p-8">
         <h3 className="font-display text-xl font-semibold mb-4 text-primary">My Approach</h3>
         <p className="text-muted-foreground leading-relaxed">
           I believe communication is not just about sharing information, but about
@@ -34,7 +34,7 @@ const AboutSection = () => (
       {highlights.map(({ icon: Icon, text }) => (
         <div
           key={text}
-          className="glass-card px-6 py-4 flex items-center gap-3 hover:glow-border transition-all duration-300"
+          className="glass-card liquid-button-card px-6 py-4 flex items-center gap-3 hover:glow-border transition-all duration-300"
         >
           <Icon size={20} className="text-primary shrink-0" />
           <span className="text-sm font-medium">{text}</span>
