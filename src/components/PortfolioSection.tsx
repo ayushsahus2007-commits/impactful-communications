@@ -1,4 +1,5 @@
 import { PenLine, Image, MessageCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
