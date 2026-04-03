@@ -16,9 +16,9 @@ const projects = [
   },
   {
     icon: MessageCircle,
-    title: "Interactive Communication",
-    desc: "Represents communication through engagement, storytelling, or real-life scenarios.",
-    link: null,
+    title: "Audio Communication",
+    desc: "Represents communication through voice, tone, and expression in real-life scenarios.",
+    link: "/audio-communication",
   },
 ];
 
